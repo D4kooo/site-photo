@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Exclure les fichiers spécifiques de la réécriture
+RewriteCond %{REQUEST_URI} !^/site-photo/pages/(login|register|profile|other-page)\.php$
+
+# Exclure les fichiers et répertoires existants
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rediriger les requêtes vers profile.php avec le paramètre username
+RewriteRule ^([A-Za-z0-9_-]+)$ profil.php?username=$1 [L,QSA]

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 50 50">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <image id="Ellipse_1" data-name="Ellipse 1" width="50" height="50" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAACVUlEQVRogeWau24TQRSGv7iggBQpIAUSSUQQEaLA4vIA4R24FDQp8xA8QXrskhQuSBWJKhIRXRooaJwoRCSISGlAMopSRYoHHeuMGBZbeHdmvTPLL/2S5bVn/0+zl7mcKUMw3QCWgYfAErAAXAWuAFPAGfAD+ArsAx+B98BxkADGz3MGXhroGjAF3dU25n2yFP3jPQMbBi48ALKWtja07dJBZg28NtAPCJB1X88xWxbIEwO9EgGy7uk5g4FcMvBqggBZtzSDF8i0ga0KIay3NEshkMsGdiKAsN7RTLlApCu3I4KwfjfqMhsFUuU98S+3xgV5FjGE9fNs7uwQ5TrQBWbCjVxK0U/gLnBiG29kzrKWAASace2Pb5zuuV/yGzu0+5r5r3tkMyEI683sPTIPHA651GJXH7gFHNngLxKEQDOv4PTILnCn4lBF9VkmcgIiM7tvMSTy0KJ0zeNk4//WckPn2KmrKSC3awCyJCCLEQTx1U0BuZY2w0Az8tQyY/wwdp2n+BIcKgE5jTBXXp0JyPe0Mg9VT0C+RBgsrw4bOlZJXfsNXRVPXZ9qNWiU/Ym9CMIU1YG9R0SdqtN46A3OxGpBn17JT3VlO+xtxaGKSDIfDT45qygP6rIcJO4kBNL5L5ZM5cDq5HPl1qoLMdCIbYVWxJdUuw4bPdt5N3pqs/VWq81Q9zJrVwjRDrE97bqKgoGn4+bLA4KWVaxPoIRjvcwSDtfNEotqmkUyFQWxtmVOux4AeyHKnEIWns1p4dkjXU+2hWfTetwtPJN1gg9aeOY/OwV+ASCsrbQyn5VtAAAAAElFTkSuQmCC"/>
+  <path id="Rectangle_arrondi_1" data-name="Rectangle arrondi 1" class="cls-1" d="M14.247,11.919L37.582,35.253a2,2,0,0,1-2.828,2.828L11.419,14.747A2,2,0,0,1,14.247,11.919Z"/>
+  <path id="Rectangle_arrondi_1-2" data-name="Rectangle arrondi 1" class="cls-1" d="M37.613,14.747L14.278,38.082a2,2,0,0,1-2.828-2.828L34.784,11.919A2,2,0,0,1,37.613,14.747Z"/>
+</svg>

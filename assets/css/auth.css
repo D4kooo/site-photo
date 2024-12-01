@@ -1,0 +1,120 @@
+:root {
+    /* Variables pour les couleurs */
+    --bg-color: #0c0c0c;
+    --text-color: #e0e0e0;
+    --accent-color: #1f1f1f;
+    --primary-color: #007BFF;
+    --primary-hover-color: #0056b3;
+    --border-color: #333;
+    --hover-bg-color: #1a1a1a;
+    --modal-bg-color: #181818;
+    --close-button-color: #ccc;
+    --close-button-hover-color: #fff;
+    --input-border-color: #555;
+    --error-color: #ff0019;
+}
+
+* {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Formulaires de connexion et d'inscription */
+.form-container {
+    max-width: 25rem;
+    margin: 9.375rem auto 3.125rem;
+    padding: 1.875rem;
+    background-color: var(--accent-color);
+    border: 1px solid var(--border-color);
+    border-radius: 0.625rem;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 1.875rem;
+    color: var(--text-color);
+    font-size: 1.5rem;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container input[type="email"],
+.form-container input[type="password"],
+.form-container input[type="text"],
+.form-container input[type="date"],
+.form-container input[type="tel"],
+.form-container input[type="number"] {
+    padding: 0.75rem 0.9375rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid var(--input-border-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border-radius: 0.3125rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-container input[type="email"]:focus,
+.form-container input[type="password"]:focus,
+.form-container input[type="text"]:focus,
+.form-container input[type="date"]:focus,
+.form-container input[type="tel"]:focus,
+.form-container input[type="number"]:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.form-container button[type="submit"] {
+    padding: 0.75rem 0.9375rem;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 0.3125rem;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-container button[type="submit"]:hover {
+    background-color: var(--primary-hover-color);
+}
+
+/* Liens sous le formulaire */
+.form-container .form-footer {
+    text-align: center;
+    margin-top: 1.25rem;
+}
+
+.form-container .form-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.form-container .form-footer a:hover {
+    color: var(--primary-hover-color);
+}
+
+/* Messages d'erreur ou de succès */
+.form-container .message {
+    text-align: center;
+    margin-bottom: 1.25rem;
+    font-size: 0.875rem;
+}
+
+.form-container .message.success {
+    color: #28a745;
+}
+
+.form-container .message.error {
+    color: #dc3545;
+}

@@ -1,0 +1,480 @@
+* {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #edf0f6;
+}
+
+/* Section des événements */
+.events-section {
+    padding: 6.25rem 1.25rem 1.25rem;
+    background-color: #f9f9f9;
+}
+
+.events-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+    color: #333;
+    text-align: center;
+}
+
+.events-container {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: visible;
+    gap: 0;
+    padding: 0.625rem 0;
+}
+
+.events-container::-webkit-scrollbar {
+    height: 0.5rem;
+}
+
+.events-container::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 0.25rem;
+}
+
+.event {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 0.625rem;
+    flex-shrink: 0;
+    margin: 0 0.625rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Effet au survol */
+.event:hover {
+    transform: translateY(-0.3125rem) scale(1.02);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.event-image-container {
+    position: relative;
+    overflow: hidden;
+    max-height: 31.25rem;
+    border-top-left-radius: 0.625rem;
+    border-top-right-radius: 0.625rem;
+}
+
+.event-image {
+    height: 31.25rem;
+    width: auto;
+    display: block;
+}
+
+.event-status {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.3125rem 0.625rem;
+    background-color: rgba(0,0,0,0.7);
+    color: #fff;
+    font-size: 0.875rem;
+    border-radius: 0 0 0.3125rem 0;
+}
+
+.event-status.available {
+    background-color: rgba(0, 123, 255, 0.8); /* Couleur bleue pour "Places disponibles" */
+}
+
+.event-status.full {
+    background-color: rgba(220, 53, 69, 0.8); /* Couleur rouge pour "Complet" */
+}
+
+.event-title {
+    font-size: 1.125rem;
+    margin: 0.9375rem;
+    color: #333;
+}
+
+.event-date {
+    font-size: 0.875rem;
+    margin: 0 0.9375rem 0.9375rem;
+    color: #777;
+}
+
+/* Styles pour le bouton d'ajout de post avec effet neumorphique adapté au bleu */
+.add-post-button {
+    position: fixed;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    width: 4.375rem;
+    height: 4.375rem;
+    background: linear-gradient(145deg, #bfdeff, #007BFF);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    text-decoration: none;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow:
+        0.25rem 0.25rem 0.9375rem rgba(0, 0, 0, 0.2),
+        -0.2rem -0.2rem 1.25rem rgba(255, 255, 255, 0.7);
+}
+
+.add-post-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow:
+        inset 0.25rem 0.25rem 0.625rem rgba(0, 0, 0, 0.2),
+        inset -0.25rem -0.25rem 0.625rem rgba(255, 255, 255, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.add-post-button:hover {
+    box-shadow:
+        0.5rem 0.5rem 1rem rgba(0, 123, 255, 0.2),
+        -0.5rem -0.5rem 1rem rgba(255, 255, 255, 0.7);
+}
+
+.add-post-button:active::before {
+    opacity: 1;
+}
+
+.add-post-button:active {
+    transform: translateY(0.1875rem);
+}
+
+/* Signe "+" */
+.plus-sign {
+    position: relative;
+    width: 1.875rem;
+    height: 1.875rem;
+}
+
+.plus-sign .horizontal,
+.plus-sign .vertical {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background-color: white;
+    transform: translate(-50%, -50%);
+}
+
+.plus-sign .horizontal {
+    width: 1.875rem;
+    height: 0.25rem;
+}
+
+.plus-sign .vertical {
+    width: 0.25rem;
+    height: 1.875rem;
+}
+
+/* Styles pour les onglets */
+.modal-tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1.25rem;
+}
+
+.tab-button {
+    padding: 0.625rem 0.625rem;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    flex: 1;
+    text-align: center;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-button.active {
+    background-color: #007BFF;
+    color: white;
+}
+
+/* Styles pour la modale */
+.modal {
+    display: none; /* Masqué par défaut */
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 200;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 1.25rem;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 31.25rem;
+    border-radius: 0.625rem;
+    position: relative;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 1.75rem;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 1.25rem;
+    top: 0.625rem;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content input[type="text"],
+.modal-content textarea {
+    padding: 0.75rem 0.9375rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid #ccc;
+    border-radius: 0.3125rem;
+    font-size: 1rem;
+    resize: vertical;
+}
+
+.modal-content textarea {
+    min-height: 9.375rem;
+}
+
+.modal-content button[type="submit"] {
+    padding: 0.75rem 0.9375rem;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 0.3125rem;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Feed */
+.feed {
+    max-width: 50rem;
+    margin: 6.25rem auto 1.25rem;
+    padding: 0 1.25rem;
+}
+
+.post {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 0.625rem;
+    margin-bottom: 1.875rem;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.post:hover {
+    box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.1);
+}
+
+/* En-tête du post */
+.post-header {
+    display: flex;
+    align-items: center;
+    padding: 0.9375rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.post-user-img {
+    width: 3.125rem;
+    height: 3.125rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 0.9375rem;
+}
+
+.post-user-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.post-username {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #333;
+}
+
+.post-pos-date {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-location {
+    font-size: 0.875rem;
+    color: #777;
+    margin-top: 0.125rem;
+}
+
+/* Styles pour le conteneur de l'image du post */
+.post-image-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Styles pour l'image du post */
+.post-image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Styles pour le bouton du menu (trois petits points) */
+.post-menu {
+    position: absolute;
+    top: 0.625rem;
+    right: 0.625rem;
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    padding: 0;
+    text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.7);
+}
+
+/* Styles pour le menu déroulant */
+.menu-dropdown {
+    display: none;
+    position: absolute;
+    top: 2.1875rem;
+    right: 0.625rem;
+    background-color: #fff;
+    min-width: 10rem;
+    border: 1px solid #ccc;
+    z-index: 1;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.2);
+}
+
+.menu-dropdown a {
+    color: #333;
+    padding: 0.625rem 0.9375rem;
+    text-decoration: none;
+    display: block;
+}
+
+.menu-dropdown a:hover {
+    background-color: #f2f2f2;
+}
+
+.menu-dropdown.show {
+    display: block;
+}
+
+.post-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.9375rem;
+}
+
+.keyword {
+    background-color: #e0e0e0;
+    border-radius: 1.25rem;
+    padding: 0.3125rem 0.9375rem;
+    font-size: 0.75rem;
+    color: #555;
+    margin: 0.3125rem 0.3125rem 0 0;
+}
+
+.post-description {
+    padding: 0 0.9375rem 0.9375rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.comment-button {
+    display: inline-block;
+    margin: 0 0.9375rem 0.9375rem;
+    padding: 0.5rem 1.25rem;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 0.3125rem;
+    color: #fff;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.comment-button:hover {
+    background-color: #0056b3;
+}
+
+.comments-section {
+    padding: 0.9375rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.comments-section h3 {
+    margin-bottom: 0.9375rem;
+    font-size: 1rem;
+    color: #333;
+}
+
+.comment {
+    margin-bottom: 0.9375rem;
+}
+
+.comment-author {
+    font-weight: bold;
+    color: #000;
+}
+
+.comment-text {
+    font-size: 0.875rem;
+    color: #555;
+    margin-left: 0.625rem;
+}
+
+/* Propriétés pour les tailles d'écran ≤ 1180px */
+@media screen and (max-width: 1180px) {
+    .events-section {
+        padding: 150px 20px 20px;
+    }
+
+}
